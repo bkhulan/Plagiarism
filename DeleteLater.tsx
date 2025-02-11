@@ -1,4 +1,4 @@
- renderControl: function TempComponent(f) {
+1. renderControl: function TempComponent(f) {
         const { value, onChange } = f;
         return (
           <div className="min-w-[210px] w-[300px]">
@@ -14,7 +14,20 @@
           </div>
         );
       },
-
+2. renderControl: function TempComponent(f) {
+        const [value, onChange] = useState("");
+        return (
+          <div className="min-w-[210px] w-[300px]">
+            <Input
+              placeholder="Хайх..."
+              value={value}
+              onChange={(e) => {
+                onChange(e.target.value);
+                f?.setQueryFile?.(e.target.value);
+              }}
+            />
+          </div>
+------------------------------------------------------------------------------------------------------------------
 fields: ModelFiles.fields.map((f: any) => ({
             ...f,
             renderControl: () =>
